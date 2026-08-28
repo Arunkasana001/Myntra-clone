@@ -102,3 +102,34 @@ header {
     display: flex;
     flex-direction: column;
 }
+
+
+/* Main content */
+.coupon_img{
+    width: 100%;
+}
+
+.banner_container {
+    margin: 40px 0;
+    display: flex;
+}
+
+.banner_img {
+    width: 100%;
+    object-fit: cover;
+}
+.discount_img{
+    width: 100%;
+}
+
+.category_heading {
+    text-transform: uppercase;
+    color: #3e4152;
+    letter-spacing: .15em;
+    font-size: 1.8em;
+    margin: 50px 0 10px 30px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+
+}
