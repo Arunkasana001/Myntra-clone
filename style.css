@@ -176,3 +176,9 @@ margin-bottom: 25px;
     color: #696b79;
     padding-bottom: 5px;
 }
+
+.copyright{
+    color: #94969f;
+    text-align: end;
+    padding: 15px;
+}
