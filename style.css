@@ -8,14 +8,18 @@
 }
 
 header {
-    /* position: fixed; */
+    box-shadow: #696e79;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     gap: 10px;
     background-color: #ffff;
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid hsla(180, 6%, 86%, 0.977);
+    /* border-bottom: 1px solid hsla(180, 6%, 86%, 0.977); */
 }
 
 .myntra_home {
@@ -106,7 +110,7 @@ header {
 
 
 /* Main content */
-.coupon_img{
+.coupon_img {
     width: 100%;
 }
 
@@ -119,7 +123,8 @@ header {
     width: 100%;
     object-fit: cover;
 }
-.discount_img{
+
+.discount_img {
     width: 100%;
 }
 
@@ -135,13 +140,13 @@ header {
 
 }
 
-.category_items{
-display: flex;
-flex-wrap: wrap;
-justify-content: space-evenly;
+.category_items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.sale_items{
+.sale_items {
     width: 250px;
 
 }
