@@ -144,7 +144,7 @@ header {
 
 }
 
-.category_items{
+.category-items {
     width: 80%;
     margin: 50px 10%;
     display: flex;
@@ -193,13 +193,13 @@ header {
 /* Items styling */
 .items-container {
     width: 80%;
-    margin: 50px 10%;
+    margin: 40px 10%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    /* display: flex;
-    flex-wrap: wrap;*/
-    gap: 20px; 
+    gap: 10px;
+
+
+
 }
 
 .item-container {
@@ -282,3 +282,9 @@ header {
     padding: 5px 15px;
     border-radius: 10px;
 }
+
+/* .item-container items{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+} */
