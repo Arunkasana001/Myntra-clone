@@ -144,7 +144,9 @@ header {
 
 }
 
-.category_items {
+.category_items{
+    width: 80%;
+    margin: 50px 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -191,14 +193,18 @@ header {
 /* Items styling */
 .items-container {
     width: 80%;
-    margin: 40px 10%;
-    /* display: flex;
+    margin: 50px 10%;
+    display: flex;
     flex-wrap: wrap;
-    gap: 20px; */
+    justify-content: space-evenly;
+    /* display: flex;
+    flex-wrap: wrap;*/
+    gap: 20px; 
 }
 
 .item-container {
     width: 250px;
+    margin: 10px;
 
 }
 
@@ -243,7 +249,7 @@ header {
     line-height: 15px;
     color: #282c3f;
     white-space: nowrap;
-   
+
 }
 
 .current-price {
