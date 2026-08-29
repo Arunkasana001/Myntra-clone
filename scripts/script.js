@@ -1,10 +1,20 @@
 console.log("welcome!");
 
 let bagItems = [];
-function addToBag(itemId){
+displayItemsOnHomePage()
+function addToBag(itemId) {
   bagItems.push(itemId);
+  displayBagIcon();
 }
+function displayBagIcon() {
+  let bagItemCountElement = document.querySelector('.bag-item-count');
+  if(!bagItemCountElement){
+    console.log('Bag count element not found!');
+    return
+  }
+  bagItemCountElement.innnerText = bagItems.length;
 
+}
 
 function displayItemsOnHomePage() {
   let itemsContainerElement = document.querySelector('.items-container');
@@ -32,4 +42,3 @@ function displayItemsOnHomePage() {
 
   itemsContainerElement.innerHTML = innerHtml;
 }
-  displayItemsOnHomePage()

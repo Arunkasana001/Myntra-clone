@@ -110,6 +110,7 @@ header {
 .action_container {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 
@@ -286,8 +287,17 @@ header {
     cursor: pointer;
 }
 
-/* .item-container items{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 10px;
-} */
+.bag-item-count{
+    background-color: #f16565;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 18px;
+    position: relative;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    left: 13px;
+    top: -44px;
+    font-weight: 700;
+    
+}
