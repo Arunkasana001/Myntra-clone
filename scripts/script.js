@@ -1,3 +1,11 @@
+console.log("welcome!");
+
+let bagItems = [];
+function addToBag(itemId){
+  bagItems.push(itemId);
+}
+
+
 function displayItemsOnHomePage() {
   let itemsContainerElement = document.querySelector('.items-container');
   if (!itemsContainerElement) {
