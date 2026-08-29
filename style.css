@@ -35,6 +35,9 @@ header {
 .action_bar {
     margin-right: 4%;
 }
+.log{
+    opacity: 2;
+}
 
 .nav_bar {
     display: flex;
