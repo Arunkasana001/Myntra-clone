@@ -1,23 +1,25 @@
 console.log("welcome!");
 
 let bagItems = [];
-displayItemsOnHomePage()
+displayItemsOnHomePage();
+displayBagIcon();
+
 function addToBag(itemId) {
   bagItems.push(itemId);
-  
   displayBagIcon();
 }
+
 function displayBagIcon() {
-  let bagItemCountElement = document.querySelector('.bag-item-count');
+  const bagItemCountElement = document.querySelector('.bag-item-count');
+  if (!bagItemCountElement) return;
 
   if (bagItems.length > 0) {
-    bagItemCountElement.innerText = bagItems.length;
-  
-  }else{
+    bagItemCountElement.style.visibility = 'visible';
+    bagItemCountElement.textContent = bagItems.length;
+  } else {
     bagItemCountElement.style.visibility = 'hidden';
+    bagItemCountElement.textContent = '';
   }
-
-  
 }
 
 function displayItemsOnHomePage() {

@@ -288,6 +288,7 @@ header {
 }
 
 .bag-item-count{
+    visibility: hidden;
     background-color: #f16565;
     white-space: nowrap;
     text-align: center;
@@ -299,5 +300,4 @@ header {
     left: 13px;
     top: -44px;
     font-weight: 700;
-    
 }
