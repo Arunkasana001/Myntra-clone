@@ -4,16 +4,20 @@ let bagItems = [];
 displayItemsOnHomePage()
 function addToBag(itemId) {
   bagItems.push(itemId);
+  console.log(bagItems);
+  
+
+  
   displayBagIcon();
 }
 function displayBagIcon() {
   let bagItemCountElement = document.querySelector('.bag-item-count');
-  if(!bagItemCountElement){
-    console.log('Bag count element not found!');
-    return
-  }
-  bagItemCountElement.innnerText = bagItems.length;
 
+  if (!bagItemCountElement) {
+    return;
+  }
+
+  bagItemCountElement.innerText = bagItems.length;
 }
 
 function displayItemsOnHomePage() {
