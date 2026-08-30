@@ -4,20 +4,20 @@ let bagItems = [];
 displayItemsOnHomePage()
 function addToBag(itemId) {
   bagItems.push(itemId);
-  console.log(bagItems);
-  
-
   
   displayBagIcon();
 }
 function displayBagIcon() {
   let bagItemCountElement = document.querySelector('.bag-item-count');
 
-  if (!bagItemCountElement) {
-    return;
+  if (bagItems.length > 0) {
+    bagItemCountElement.innerText = bagItems.length;
+  
+  }else{
+    bagItemCountElement.style.visibility = 'hidden';
   }
 
-  bagItemCountElement.innerText = bagItems.length;
+  
 }
 
 function displayItemsOnHomePage() {
