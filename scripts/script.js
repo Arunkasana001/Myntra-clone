@@ -1,13 +1,14 @@
 console.log("welcome!");
 
-let bagItems;
+
+
 onLoad();
 function onLoad() {
-  let bagItemsStr = localStorage.getItem('bagitems');
+  bagItemsStr = localStorage.getItem('bagitems');
   bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : []; 
-  
-  displayItemsOnHomePage();
+   displayItemsOnHomePage();
   displayBagIcon();
+
 }
 
 function addToBag(itemId) {
