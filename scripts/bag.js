@@ -1,40 +1,54 @@
 const CONVENIENCE_FEES = 99;
-const BAG_ITEMS_KEY = 'bagItems';
-let bagItems = [];
-let bagItemObjects = [];
+const BAG_PAGE_ITEMS_KEY = 'bagItems';
+let bagPageItems = [];
+let bagPageItemObjects = [];
 
-onLoad();
+bagPageOnLoad();
 
-function onLoad() {
-    const bagItemsStr = localStorage.getItem(BAG_ITEMS_KEY);
-    try {
-        const parsedItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
-        bagItems = Array.isArray(parsedItems) ? parsedItems : [];
-    } catch (error) {
-        bagItems = [];
-    }
+function bagPageOnLoad() {
+  const bagItemsStr = localStorage.getItem(BAG_PAGE_ITEMS_KEY);
+  try {
+    const parsedItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
+    bagPageItems = Array.isArray(parsedItems) ? parsedItems : [];
+  } catch (error) {
+    bagPageItems = [];
+  }
 
-    loadBagItemObjects();
-    displayBagItems();
-    displayBagSummary();
+  loadBagPageItemObjects();
+  displayBagItems();
+  displayBagSummary();
+  displayBagIcon();
+}
+
+function displayBagIcon() {
+  const bagItemCountElement = document.querySelector('.bag-item-count');
+  if (!bagItemCountElement) return;
+
+  if (bagPageItems.length > 0) {
+    bagItemCountElement.style.visibility = 'visible';
+    bagItemCountElement.textContent = bagPageItems.length;
+  } else {
+    bagItemCountElement.style.visibility = 'hidden';
+    bagItemCountElement.textContent = '';
+  }
 }
 
 function displayBagSummary() {
-    let bagSummaryElement = document.querySelector('.bag-summary');
-    if (!bagSummaryElement) return;
+  let bagSummaryElement = document.querySelector('.bag-summary');
+  if (!bagSummaryElement) return;
 
-    let totalItem = bagItemObjects.length;
-    let totalMRP = 0;
-    let totalDiscount = 0;
+  let totalItem = bagPageItemObjects.length;
+  let totalMRP = 0;
+  let totalDiscount = 0;
 
-    bagItemObjects.forEach(bagItem => {
-        totalMRP += bagItem.original_price;
-        totalDiscount += bagItem.original_price - bagItem.current_price;
-    });
+  bagPageItemObjects.forEach(bagItem => {
+    totalMRP += bagItem.original_price;
+    totalDiscount += bagItem.original_price - bagItem.current_price;
+  });
 
-    let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
+  let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
 
-    bagSummaryElement.innerHTML = `
+  bagSummaryElement.innerHTML = `
     <div class="bag-details-container">
       <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
       <div class="price-item">
@@ -61,36 +75,34 @@ function displayBagSummary() {
   `;
 }
 
-function loadBagItemObjects() {
-    bagItemObjects = bagItems
-        .map(itemId => items.find(item => String(item.id) === String(itemId)))
-        .filter(Boolean);
+function loadBagPageItemObjects() {
+  bagPageItemObjects = bagPageItems
+    .map(itemId => items.find(item => String(item.id) === String(itemId)))
+    .filter(Boolean);
 }
 
 function displayBagItems() {
-    let containerElement = document.querySelector('.bag-items-container');
-    if (!containerElement) return;
+  let containerElement = document.querySelector('.bag-items-container');
+  if (!containerElement) return;
 
-    let innerHTML = '';
-    bagItemObjects.forEach(bagItem => {
-        innerHTML += generateItemHTML(bagItem);
-    });
-    containerElement.innerHTML = innerHTML;
+  let innerHTML = '';
+  bagPageItemObjects.forEach(bagItem => {
+    innerHTML += generateItemHTML(bagItem);
+  });
+  containerElement.innerHTML = innerHTML;
 }
 
 function removeFromBag(itemId) {
-    bagItems = bagItems.filter(bagItemId => String(bagItemId) !== String(itemId));
-    localStorage.setItem(BAG_ITEMS_KEY, JSON.stringify(bagItems));
-    loadBagItemObjects();
-    if (typeof displayBagIcon === 'function') {
-        displayBagIcon();
-    }
-    displayBagItems();
-    displayBagSummary();
+  bagPageItems = bagPageItems.filter(bagItemId => String(bagItemId) !== String(itemId));
+  localStorage.setItem(BAG_PAGE_ITEMS_KEY, JSON.stringify(bagPageItems));
+  loadBagPageItemObjects();
+  displayBagIcon();
+  displayBagItems();
+  displayBagSummary();
 }
 
 function generateItemHTML(item) {
-    return `<div class="bag-item-container">
+  return `<div class="bag-item-container">
     <div class="item-left-part">
       <img class="bag-item-img" src="../${item.image}">
     </div>
