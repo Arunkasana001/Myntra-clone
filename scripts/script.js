@@ -1,19 +1,25 @@
 console.log("welcome!");
 
-
+const BAG_ITEMS_KEY = 'bagItems';
+let bagItems = [];
 
 onLoad();
 function onLoad() {
-  bagItemsStr = localStorage.getItem('bagitems');
-  bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : []; 
-   displayItemsOnHomePage();
-  displayBagIcon();
+  const bagItemsStr = localStorage.getItem(BAG_ITEMS_KEY);
+  try {
+    const parsedItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
+    bagItems = Array.isArray(parsedItems) ? parsedItems : [];
+  } catch (error) {
+    bagItems = [];
+  }
 
+  displayItemsOnHomePage();
+  displayBagIcon();
 }
 
 function addToBag(itemId) {
-  bagItems.push(itemId);
-  localStorage.setItem('bagitems', JSON.stringify(bagItems))
+  bagItems.push(String(itemId));
+  localStorage.setItem(BAG_ITEMS_KEY, JSON.stringify(bagItems));
   displayBagIcon();
 }
 
